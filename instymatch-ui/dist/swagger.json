@@ -1,0 +1,262 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "The *InstyMatch API* allows users to match **one Job Description** against up to **10 resume files** and obtain a scored result. <br> The result scores are broken up into 3 categories: **Dynamic**, **Static**, and **Distributed**. <br> **Dynamic scores** represent a Resumes qualifications with respect to the Job Description (e.g. how well the Skills section in a Resume match up against the Skills required in the Job Description). <br> **Static scores** are given in respect to the Resume independently (e.g. The higher the education degree achieved or the more prestigious the university then the higher the educational static score). <br> **Total score** is a combination of the Dynamic & Static scores, after which are given the **Distributed scores**, which are a measure of how much each Dynamic & Static section weighed on the resulting Total Score. <br> Lastly a Feedback value is returned with every Resume with feedback from our internal engine as to how one can improve the contents of their Resume.",
+      "version": "1.0.0",
+      "title": "InstyMatch API",
+      "contact": {
+        "email": "yevgeniy.vasilyev@wailiantech.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "tags": [
+      {
+        "name": "Developers",
+        "description": "InstyMatch endpoint to be used by devs"
+      }
+    ],
+    "schemes": [
+      "https"
+    ],
+    "host": "instymatch.com",
+    "paths": {
+      "/openapi/instymatch": {
+        "post": {
+          "tags": [
+            "Developers"
+          ],
+          "summary": "Provide the text of a Job Description & up to 10 resume files",
+          "operationId": "runInstyMatch",
+          "description": "Score batch of resumes against JD",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "formData",
+              "name": "JobPostingText",
+              "description": "text of Job Description",
+              "type": "string",
+              "required": true
+            },
+            {
+              "in": "formData",
+              "name": "file0",
+              "description": "Set of resume files uploaded, up to 10 resume files",
+              "type": "file",
+              "required": true
+            },
+            {
+              "in": "formData",
+              "name": "file1",
+              "type": "file"
+            },
+            {
+              "in": "formData",
+              "name": "file2",
+              "type": "file"
+            },
+            {
+              "in": "formData",
+              "name": "file3",
+              "type": "file"
+            },
+            {
+              "in": "formData",
+              "name": "file4",
+              "type": "file"
+            },
+            {
+              "in": "formData",
+              "name": "file5",
+              "type": "file"
+            },
+            {
+              "in": "formData",
+              "name": "file6",
+              "type": "file"
+            },
+            {
+              "in": "formData",
+              "name": "file7",
+              "type": "file"
+            },
+            {
+              "in": "formData",
+              "name": "file8",
+              "type": "file"
+            },
+            {
+              "in": "formData",
+              "name": "file9",
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "JD-Resumes Successfully Scored",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Data": {
+                    "type": "object",
+                    "properties": {
+                      "fileNameOne.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameTwo.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameThree.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameFour.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameFive.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameSix.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameSeven.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameEight.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameNine.pdf": {
+                        "$ref": "#/definitions/Result"
+                      },
+                      "fileNameTen.pdf": {
+                        "$ref": "#/definitions/Result"
+                      }
+                    }
+                  },
+                  "ErrorMessage": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "string",
+                    "example": "Success"
+                  },
+                  "Code": {
+                    "type": "integer",
+                    "example": 200
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Failed To Score Resumes",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Message": {
+                    "type": "string",
+                    "example": "InstyMatchOpenAPI : Error in parsing request Multipart/form-data"
+                  },
+                  "Code": {
+                    "type": "integer",
+                    "example": 400
+                  }
+                }
+              }
+            },
+            "429": {
+              "description": "Rate Limit Reached",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Message": {
+                    "type": "string",
+                    "example": "You have reached the maximum request limit"
+                  },
+                  "Code": {
+                    "type": "integer",
+                    "example": 429
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Result": {
+        "description": "Model JSON object containing resume scores",
+        "properties": {
+          "dist_work": {
+            "type": "number",
+            "example": 17.65
+          },
+          "dist_sim": {
+            "type": "number",
+            "example": 52.38
+          },
+          "dist_skill": {
+            "type": "number",
+            "example": 12.14
+          },
+          "dist_github": {
+            "type": "number",
+            "example": 8.17
+          },
+          "dist_educ": {
+            "type": "number",
+            "example": 9.66
+          },
+          "static_educ": {
+            "type": "number",
+            "example": 48.37
+          },
+          "static_github": {
+            "type": "number",
+            "example": 70
+          },
+          "static_sim": {
+            "type": "number",
+            "example": 8.9
+          },
+          "static_work": {
+            "type": "number",
+            "example": 30.34
+          },
+          "static_skill": {
+            "type": "number",
+            "example": 89
+          },
+          "dynamic_sim": {
+            "type": "number",
+            "example": 11.57
+          },
+          "dynamic_work": {
+            "type": "number",
+            "example": 63.92
+          },
+          "dynamic_skill": {
+            "type": "number"
+          },
+          "dynamic_github": {
+            "type": "number",
+            "example": 25
+          },
+          "total": {
+            "type": "number",
+            "example": 42.08
+          },
+          "feedback": {
+            "type": "string",
+            "example": "The ranking among other resumes..."
+          }
+        }
+      }
+    }
+  }
