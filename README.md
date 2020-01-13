@@ -1,4 +1,4 @@
-# InstyMatch [![build-status](https://travis-ci.com/backslash-f/aescryptable.svg?branch=master)](https://travis-ci.com/backslash-f/aescryptable) [![license](https://img.shields.io/badge/license-mit-brightgreen.svg)](https://en.wikipedia.org/wiki/MIT_License)
+# InstyMatch [![build-status](https://travis-ci.com/backslash-f/aescryptable.svg?branch=master)](https://travis-ci.com/backslash-f/aescryptable) [![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/wlanalysis2017/InstyMatchAPI/blob/master/LICENSE.txt) [![Generic badge](https://img.shields.io/badge/Version-1.0.0-blue.svg)](https://shields.io/)
 
 
 ## Table of Contents
