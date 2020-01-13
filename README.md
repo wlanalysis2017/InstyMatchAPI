@@ -23,8 +23,6 @@ The *InstyMatch API* allows users to match **one Job Description** against up to
 ## Try it out
 [https://instymatch.com/docs/](https://instymatch.com/docs/)
 
-
-
 ## Getting Started
 
 1. Build a multipart/form-data POST request to [https://instymatch.com/openapi/instymatch](https://instymatch.com/openapi/instymatch)
@@ -49,11 +47,8 @@ Ex: {"Data":{"firstResumeFileToScore.pdf":{"dist_work":5.11,"dist_sim":61.64,"di
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
+Distributed under the MIT License. See [LICENSE](https://github.com/wlanalysis2017/InstyMatchAPI/blob/master/LICENSE.txt) for more information.
 
 ## Contact
 
-InstyMatch Support - yevgeniy.vasilyev@wailiantech.com
+Contact us @ [InstyMatchSupport](yevgeniy.vasilyev@wailiantech.com)
