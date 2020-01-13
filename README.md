@@ -28,17 +28,17 @@ The *InstyMatch API* allows users to match **one Job Description** against up to
 1. Build a multipart/form-data POST request to [https://instymatch.com/openapi/instymatch](https://instymatch.com/openapi/instymatch)
 2. Attach to form-data each Resume file to score with a form-value of "file" + index (0-9) (Up to 10 Resume files may be submitted).
 ```sh
-Ex: "file0" : firstResumeFileToScore.pdf
+"file0" : firstResumeFileToScore.pdf
 ```
 ```sh
-Ex: "file1" : secondResumeFileToScore.pdf
+"file1" : secondResumeFileToScore.pdf
 ```
 ```sh
-Ex: "file2" : thirdResumeFileToScore.pdf
+"file2" : thirdResumeFileToScore.pdf
 ```
 3. Attach to form-data of key name "JobPostingText" the text of a Job Description to score your Resume set against.
 ```sh
-Ex: "JobPostingText" : "Must have a BS in Computer Science. Must have 2+ years of experience ..."
+"JobPostingText" : "Must have a BS in Computer Science. Must have 2+ years of experience ..."
 ```
 4. Parse successful JSON response from server
 ```sh
@@ -51,4 +51,4 @@ Distributed under the MIT License. See [LICENSE](https://github.com/wlanalysis20
 
 ## Contact
 
-Contact us @ [InstyMatchSupport](yevgeniy.vasilyev@wailiantech.com)
+Contact us @ [InstyMatchSupport](mailto:yevgeniy.vasilyev@wailiantech.com?subject=[Github]InstyMatch%20API)
